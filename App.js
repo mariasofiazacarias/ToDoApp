@@ -6,7 +6,6 @@ export default function App() {
     const [tarefasAtual, setTarefasAtual] = useState('');
     const [listaTarefas, setListaTarefas] = useState([]);
 
-  
     const salvarDadosLocal = async (novaLista) => {
         try {
             const listaString = JSON.stringify(novaLista);
@@ -15,7 +14,6 @@ export default function App() {
             console.error('Erro ao salvar dados: ', error);
         }
     };
-
 
     const resgatarDadosLocal = async () => {
         try {
@@ -28,18 +26,14 @@ export default function App() {
         }
     };
 
-
     useEffect(() => {
         resgatarDadosLocal();
     }, []);
 
-
     const handleAdicionarTarefa = () => {
-
         if (tarefasAtual.trim() === '') {
             return;
         }
-
 
         const novaLista = [...listaTarefas, tarefasAtual];
         setListaTarefas(novaLista);
