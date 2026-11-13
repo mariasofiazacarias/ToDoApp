@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App() {
     const [tarefasAtual, setTarefasAtual] = useState('');
@@ -13,6 +14,10 @@ export default function App() {
         setTarefasAtual('');
 
     };
+    const salvarTeste = async () => {
+        await AsyncStorage.setItem('chave_secreta', 'Felipe');
+        console.log('Teste salvo no cofre!');
+    } ;
     return (
         <View>
             <Text style={styles.title}> Lista de Tarefas</Text>
@@ -103,4 +108,3 @@ const styles = StyleSheet.create({
     },
 });
 }
- 
